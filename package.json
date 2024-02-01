@@ -4,7 +4,7 @@
   "description": "Easy convert currencies in the browser; just select the currency you'd like to convert (including the currency symbol), right click and select convert to default.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config webpack/webpack.config.js"
   },
   "keywords": [],
   "author": "",
