@@ -1,0 +1,38 @@
+<html>
+    <style>
+        * {
+        }
+        body {
+            padding: 50px;
+        }
+        #currency-type-in-container {
+            margin-bottom: 10px;
+        }
+        input {
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            padding: 5px;
+            color: darkgrey;
+            border: 1.5px solid grey;
+        }
+        label {
+          font-size: 1.5rem;
+        }
+    </style>
+    <body>
+        <h1>Hello Extensions</h1>
+        <form>
+            <div id="currency-type-in-container">
+                <label type="text" id="currency-type-in">Convert from</label>
+                <input type="text" id="currency-type-in" value="eur"/>
+                <label type="text" id="currency-type-out">to</label>
+                <input type="text" id="currency-type-out" />
+            </div>
+            <label for="currency-amount">Amount</label>
+            <input type="text" id="currency-amount" />
+            <button id="button">Click me</button>
+        </form>
+        <script src="popup.js"></script>
+    </body>
+</html>
