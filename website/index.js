@@ -12,7 +12,9 @@ inputElement.addEventListener("input", (event) => {
             currency.style.display = "none";
         }
     });
-})
+});
+
+containerElement.innerText = "Loading...";
 
 fetch(
     "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json"
@@ -20,9 +22,13 @@ fetch(
     .then((response) => response.json())
     .then((data) => {
         printData(data);
+    })
+    .catch((e) => {
+        containerElement.innerText = "Error fetching data";
     });
 
 function printData(data) {
+    containerElement.innerText = "";
     for (let key in data) {
         const currency = data[key];
         const currencyElement = document.createElement("div");
