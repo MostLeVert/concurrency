@@ -1,29 +1,28 @@
-const convertButton = document.getElementById(
-    "convert-button"
-) as HTMLDivElement;
-const currencyTypeIn = document.getElementById(
+const formElement = document.getElementById(
+    "currency-conversion-form"
+) as HTMLFormElement;
+const baseCurrencyElement = document.getElementById(
     "currency-type-in"
 ) as HTMLSelectElement;
-const currencyTypeOut = document.getElementById(
+const toCurrencyElement = document.getElementById(
     "currency-type-out"
 ) as HTMLSelectElement;
-const currencyAmount = document.getElementById(
+const currencyAmountElement = document.getElementById(
     "currency-amount"
 ) as HTMLInputElement;
-const currencyResult = document.getElementById(
+const currencyResultElement = document.getElementById(
     "currency-result"
-) as HTMLDivElement;
+) as HTMLSpanElement;
 
-convertButton.addEventListener("click", () => {
-    const base: string = currencyTypeIn.value.toLowerCase();
-    const to: string = currencyTypeOut.value.toLowerCase();
-    const amount: number = Number(currencyAmount.value);
+formElement.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const base: string = baseCurrencyElement.value.toLowerCase();
+    const to: string = toCurrencyElement.value.toLowerCase();
+    const amount: number = Number(currencyAmountElement.value);
     getCurrencies(base, to, amount);
 });
 
 function getCurrencies(base: string, to: string, amount: number) {
-    console.log(base, to, amount)
-    console.log(`${base}`);
     fetch(
         `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${base}.json`
     )
@@ -31,7 +30,7 @@ function getCurrencies(base: string, to: string, amount: number) {
         .then((data) => {
             const rate: number = Number(data[base][to]);
             const result: number = amount * rate;
-            currencyResult.innerText = result.toString();
+            currencyResultElement.innerText = result.toFixed(9).toString();
         })
         .catch((error) => {
             console.error("Error:", error);
