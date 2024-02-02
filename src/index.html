@@ -1,0 +1,60 @@
+<html>
+    <style>
+        * {
+            font-family: monospace;
+            padding: 0;
+            margin: 0;
+        }
+        html {
+            padding: 1px;
+            background: transparent;
+        }
+        body {
+            padding: 12.5px;
+            border: 2px solid black;
+        }
+        form {
+            width: 100%;
+        }
+        #currency-type-in-container {
+            margin-bottom: 10px;
+        }
+        input {
+            outline: none;
+            margin-bottom: 10px;
+            margin-top: 1.5px;
+            padding: 5px;
+            color: black;
+            border: none;
+            border-bottom: 1.5px solid black;
+            border-left: 1.5px solid black;
+        }
+        label {
+            font-size: 1.2rem;
+            border-bottom: 1.5px solid black;
+        }
+        button {
+            padding: 5px;
+            border: none;
+            background: black;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+            margin: auto;
+        }
+    </style>
+    <body>
+        <div id="currency-type-in-container">
+            <label type="text" id="currency-type-in-label">from</label>
+            <input type="text" id="currency-type-in" placeholder="CAD" />
+            <label type="text" id="currency-type-out-label">to</label>
+            <input type="text" id="currency-type-out" placeholder="USD" />
+        </div>
+        <label for="currency-amount-label">Amount</label>
+        <input type="number" id="currency-amount" />
+        <button id="convert-button">Convert!</button>
+        <div id="result">
+            <p id="currency-result"></p>
+        </div>
+    </body>
+</html>
