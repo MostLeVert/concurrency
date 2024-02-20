@@ -1,92 +1,31 @@
 <html>
-    <style>
-        :root {
-            font-size: 20px;
-        }
-        * {
-            font-family: monospace;
-            padding: 0;
-            margin: 0;
-        }
-        html {
-            padding: 1px;
-            background: transparent;
-        }
-        body {
-            padding: 10px;
-            width: 500px;
-        }
-        header {
-            margin-bottom: 10px;
-            border-bottom: 1.5px solid black;
-            padding-bottom: 7.5px;
-        }
-        form {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        #currency-type-in-container {
-            margin-bottom: 10px;
-        }
-        input {
-            outline: none;
-            margin-bottom: 10px;
-            margin-top: 1.5px;
-            padding: 5px;
-            color: black;
-            border: none;
-            border-bottom: 1.5px solid black;
-            border-left: 1.5px solid black;
-        }
-        label {
-            font-size: 1rem;
-        }
-        button {
-            padding: 5px;
-            border: none;
-            font-size: 2rem;
-            background: black;
-            color: white;
-            cursor: pointer;
-            width: 100%;
-            margin: auto;
-        }
-        #currency-result {
-            border: 1.5px solid black;
-            padding: 10px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            font-size: 1.5rem;
-        }
-    </style>
-    <body>
-        <header>
-            <a href="settings.html">Settings</a>
-            &nbsp; | &nbsp;
-            <a href="https://concurrency.pages.dev">Supported Currencies</a>
-            &nbsp; | &nbsp;
-            <a href="#">Donate</a>
-            &nbsp; | &nbsp;
-            <a href="https://github.com/mostlevert/concurrency">Source Code</a>
-        </header>
-        <form id="currency-conversion-form" autocomplete="off">
-            <label for="currency-type-in">from</label>
-            <input type="text" id="currency-type-in" placeholder="CAD or cad" />
-            <label for="currency-type-out">to</label>
-            <input
-                type="text"
-                id="currency-type-out"
-                placeholder="USD or usd"
-            />
-            <label for="currency-amount">Amount</label>
+<style>
+    #row-0 {
+        display: flex;
+        flex-direction: row;
+    }
+    #currency-result {
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+    <header>
+        <a href="settings.html">Settings</a>
+        &nbsp; | &nbsp;
+        <a href="https://concurrency.pages.dev">Supported Currencies</a>
+        &nbsp; | &nbsp;
+        <a href="https://github.com/mostlevert/concurrency">Source Code</a>
+    </header>
+    <form id="currency-conversion-form" autocomplete="off">
+        <div id="row-0">
             <input type="number" id="currency-amount" placeholder="32" />
-            <output id="currency-result">223</output>
-            <button type="submit">submit</button>
-        </form>
-    </body>
+            <input type="text" id="currency-type-in" placeholder="CAD" />
+        </div>
+        <input type="text" id="currency-type-out" placeholder="USD" />
+        <output id="currency-result">223</output>
+        <button type="submit">submit</button>
+    </form>
+</body>
+
 </html>
