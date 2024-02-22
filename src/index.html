@@ -7,11 +7,28 @@
     <script defer src="page.js"></script>
     <title>Converted Currency</title>
 </head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    main {
+        display: inline-block;
+        margin: auto;
+    }
+</style>
 
 <body>
-    <h1>Concurrency</h1>
-    <p>Your currency conversion from <span id="currency-from"></span> to <span id="currency-out"></span> is <span id="currency-out-amount"></span></p>
-    <h1 id="display-element"></h1>
+    <main>
+        <h1>Concurrency</h1>
+        <p>
+            <span id="currency-from-amount"></span>
+            <span id="currency-from"></span>
+            is <span id="currency-to-amount"></span>
+            <span id="currency-to"></span>
+        </p>
+    </main>
 </body>
 
 </html>
