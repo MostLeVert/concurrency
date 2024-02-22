@@ -1,9 +1,38 @@
 <html>
 
 <head>
-    <script defer="defer" src="main.js"></script>
+    <script defer="defer" src="background.js"></script>
 </head>
 <style>
+    header {
+        padding-bottom: 10px;
+    }
+
+    body {
+        padding: 10px;
+    }
+
+    label {
+        font-size: 1.5rem;
+    }
+
+    input {
+        border-radius: 5px;
+        border: 2px solid black;
+        padding: 5px;
+        margin: 5px;
+        outline: none;
+        font-size: 1.25rem;
+    }
+
+    form>div {
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .row {
+        display: flex;
+    }
 </style>
 
 <body>
@@ -11,15 +40,15 @@
         <a href="https://concurrency.pages.dev" target="_blank">Supported Currencies</a>
     </header>
     <form id="currency-conversion-form" autocomplete="off">
-        <label for="currency-amount">Amount from</label>
-        <input type="number" id="currency-amount" placeholder="..." />
-        <label for="currency-amount">Currency from</label>
-        <input id="currency-type-in" placeholder="CAD" />
-        <label for="currency-amount">Amount to</label>
-        <input type="number" id="currency-result" placeholder="..." />
-        <label for="currency-amount">Currency to</label>
-        <input id="currency-type-out" placeholder="USD" />
-        <button type="submit">submit</button>
+        <div class="row">
+            <input type="number" id="currency-amount" placeholder="..." />
+            <input id="currency-type-in" placeholder="CAD" />
+        </div>
+        <div>&updownarrow;</div>
+        <div class="row">
+            <input type="number" id="currency-result" placeholder="..." />
+            <input id="currency-type-out" placeholder="USD" />
+        </div>
     </form>
 </body>
 
