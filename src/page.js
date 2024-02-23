@@ -11,7 +11,7 @@ submitButton.addEventListener("click", function () {
 
 function setDefaultCurrency(defaultCurrency) {
   chrome.storage.local.set(
-    { defaultCurrencySet: defaultCurrency },
+    { defaultCurrency: defaultCurrency },
     function () {
       if (chrome.runtime.lastError) {
         statusOutput.innerText = `Error setting default currency: ${chrome.runtime.lastError}`;
