@@ -1,22 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
+    <style>
+        :root {
+            font-size: 22px;
+        }
 
-<body>
-    <h1>Concurrency</h1>
-    <form>
-        <label for="default-currency-set">default currency</label>
-        <input type="text" id="set-default-currency-input" />
-        <button id="set-default-currency-button">set</button>
-    </form>
-    <output id="status-output"></output>
-</body>
+        * {
+            font-family: monospace;
+        }
 
-<script defer src="page.js"></script>
+        #current-settings-wrapper {
+            border: 2px solid black;
+            padding: 7.5px;
+        }
 
+        #default-currency {
+            display: inline-block;
+            width: 45%;
+            border: none;
+            font-size: inherit;
+            padding: 0;
+            margin: 0;
+            outline: none;
+        }
+
+        #search-result-response {
+            position: absolute;
+            border: 2px solid black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+    <body>
+        <h1>Concurrency</h1>
+        <div id="current-settings-wrapper">
+            <h2>Your Settings</h2>
+            <label for="cars">Currency</label>
+
+            <select name="cars" id="cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+        </div>
+    </body>
+
+    <script defer src="page.js"></script>
 </html>
