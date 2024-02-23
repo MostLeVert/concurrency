@@ -1,11 +1,23 @@
-const currencyToAmountElement = document.getElementById("currency-to-amount");
-const currencyToElement = document.getElementById("currency-to");
-const currencyFromElement = document.getElementById("currency-from");
-const currencyFromAmountElement = document.getElementById("currency-from-amount")
+const submitButton = document.getElementById("set-default-currency-button");
+const defaultCurrencyInput = document.getElementById(
+  "set-default-currency-input",
+);
+const statusOutput = document.getElementById("status-output");
 
-chrome.storage.local.get(['currencyFromAmount', 'currencyFrom', 'currencyTo', 'currencyToAmount'], function (result) {
-    currencyToAmountElement.innerText = result.currencyToAmount;
-    currencyToElement.innerText = result.currencyTo;
-    currencyFromElement.innerText = result.currencyFrom;
-    currencyFromAmountElement.innerText = result.currencyFromAmount;
-})
+submitButton.addEventListener("click", function () {
+  statusOutput.innerText = "setting value";
+  setDefaultCurrency(defaultCurrencyInput.value);
+});
+
+function setDefaultCurrency(defaultCurrency) {
+  chrome.storage.local.set(
+    { defaultCurrencySet: defaultCurrency },
+    function () {
+      if (chrome.runtime.lastError) {
+        statusOutput.innerText = `Error setting default currency: ${chrome.runtime.lastError}`;
+      } else {
+        statusOutput.innerText = `Default currency set to ${defaultCurrency}`;
+      }
+    },
+  );
+}
