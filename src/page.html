@@ -7,44 +7,92 @@
     </head>
 
     <style>
-        :root {
-            font-size: 22px;
+        body {
+            width: 300px;
         }
-
-        * {
-            font-family: monospace;
+        .setting-row {
+            display: flex;
+            font-size: 1rem;
         }
-
-        #current-settings-wrapper {
-            border: 2px solid black;
-            padding: 7.5px;
+        .setting-description-container {
+            border-right: 2px solid black;
+            width: 50%;
+            font-size: 1rem;
         }
-
-        #currencies {
-            /* border-radius: 12px; */
-            font-size: 0.6rem;
-            padding: 5px;
+        .setting-interaction-container {
+            display: inline-block;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #currency-selection {
+            font-size: 1rem;
+        }
+        #search-results {
             border: 1.5px solid black;
+            box-shadow: 0px 0px 5px 0px grey;
+            border-radius: 5px;
         }
-
-        #currencies:hover {
+        #search-results-search {
+            height: 50px;
+            font-size: 1.1rem;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid black;
+        }
+        #search-results-search-input {
+            border: none;
+            margin-left: 10px;
+            font-size: 1.1rem;
+            padding: 5px;
+            outline: none;
+            border-bottom: 1px solid black;
+        }
+        .search-result {
+            padding: 5px;
+            font-size: 1rem;
+            border: 1px solid transparent;
+        }
+        .search-result:hover {
+            border: 1px solid black;
             cursor: pointer;
         }
-
-        output {
-            font-size: 0.5rem;
+        button {
+            padding: 5px;
+            border: 1.5px solid black;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px 0px lightgrey;
+            background: white;
+        }
+        button:hover {
+            cursor: pointer;
         }
     </style>
 
     <body>
         <h1>Concurrency</h1>
-        <div id="current-settings-wrapper">
-            <h2>Your Settings</h2>
-            <label for="currencies">Currency:</label>
-
-            <select name="currency-select" id="currencies"></select>
-        </div>
-        <output id="status-output">Awaiting interaction...</output>
+        <main>
+            <h2>Settings</h2>
+            <h3>Default Conversion Currency</h3>
+            <div class="setting-row">
+                <div class="setting-description-container">
+                    Specify the default currency for all conversion outputs.
+                </div>
+                <div class="setting-interaction-container">
+                    <button id="currency-selection">
+                        <span id="currency-selection-C">CAD</span>
+                        <span id="currency-selection-S">▼</span>
+                    </button>
+                </div>
+            </div>
+            <div id="search-results" style="display: none">
+                <div id="search-results-search">
+                    Search: <input id="search-results-search-input" />
+                </div>
+            </div>
+        </main>
     </body>
 
     <script defer src="page.js"></script>
