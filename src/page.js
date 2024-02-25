@@ -32,43 +32,67 @@ function main() {
   getInitData();
 
   function createData(data) {
-    let dataMod = [];
-    for (let key in data) {
-      dataMod.push(key);
-    }
-    renderList(dataMod.slice(0, 10));
+    renderList(Object.entries(data).slice(0, 10));
     searchResultsES.addEventListener("input", (e) => {
-      search(e.target.value, dataMod);
+      search(e.target.value, data);
     });
   }
 
-  function search(searchQuery, dataMod) {
-    const matches = dataMod
-      .filter((item) => item.toLowerCase().includes(searchQuery))
-      .sort((a, b) => {
-        if (a.toLowerCase() === searchQuery) return -1;
-        if (b.toLowerCase() === searchQuery) return 1;
-        return 0;
+  function search(searchQuery, data) {
+    const results = Object.entries(data)
+      // Filter entries where either key or value matches the search query (case-insensitive)
+      .filter(
+        ([key, value]) =>
+          key.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          value.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
+      // Sort entries to prioritize exact matches of either key or value
+      .sort(([keyA, valueA], [keyB, valueB]) => {
+        const queryLower = searchQuery.toLowerCase();
+        const exactMatchA =
+          keyA.toLowerCase() === queryLower ||
+          valueA.toLowerCase() === queryLower
+            ? -1
+            : 0;
+        const exactMatchB =
+          keyB.toLowerCase() === queryLower ||
+          valueB.toLowerCase() === queryLower
+            ? 1
+            : 0;
+        return exactMatchA - exactMatchB || keyA.localeCompare(keyB);
       })
+      // Limit to the top 10 results
       .slice(0, 10);
-    renderList(matches);
+
+    // Convert the filtered and sorted array back to an object, if needed
+    const topResults = results.reduce((acc, [key, value]) => {
+      acc[key] = value;
+      return acc;
+    }, {});
+
+    renderList(Object.entries(topResults));
   }
 
   function renderList(list) {
-    document.querySelectorAll(".search-result").forEach((e) => {
-      e.parentNode.removeChild(e);
-    });
-    list.forEach((li) => {
+    // Ensure searchResultsE is correctly defined, pointing to your container for search results
+    const searchResultsE = document.getElementById("search-results"); // Example ID, adjust as necessary
+
+    // Clear existing search results
+    document.querySelectorAll(".search-result").forEach((e) => e.remove());
+
+    // Iterate over the list of [key, value] pairs
+    list.forEach(([key, value]) => {
       const selectionOption = document.createElement("div");
-      selectionOption.innerText = li;
+      const selectionOptionDesc = document.createElement("span");
+      selectionOptionDesc.innerText = value || "-";
+      selectionOptionDesc.classList.add("search-result-desc");
+      selectionOption.innerText = key.toUpperCase();
+      selectionOption.appendChild(selectionOptionDesc);
       selectionOption.classList.add("search-result");
-      selectionOption.addEventListener("click", (e) => {
-        handleCurrencyClick(e);
-      });
+      selectionOption.addEventListener("click", handleCurrencyClick);
       searchResultsE.appendChild(selectionOption);
     });
   }
-
   function handleCurrencyClick(e) {
     const newDefaultCurrency = e.target.innerText;
     chrome.storage.local.set(
