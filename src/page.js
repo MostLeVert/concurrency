@@ -2,7 +2,7 @@ const searchResultsE = document.getElementById("search-results");
 const searchResultsES = document.getElementById("search-results-search");
 const currencySelectionEB = document.getElementById("currency-selection");
 const currencySelectionEBS = document.getElementById("currency-selection-S");
-const correncySelectionEBC = document.getElementById("currency-selection-C");
+const currencySelectionEBC = document.getElementById("currency-selection-C");
 
 function toggleElementText(element, textFrom, textTo) {
   element.innerText = element.innerText === textFrom ? textTo : textFrom;
@@ -10,6 +10,12 @@ function toggleElementText(element, textFrom, textTo) {
 function toggleElementDisplay(e) {
   e.style.display = e.style.display === "block" ? "none" : "block";
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  chrome.storage.local.get(["defaultCurrency"], function (result) {
+    currencySelectionEBC.innerText = result.defaultCurrency;
+  });
+});
 
 currencySelectionEB.addEventListener("click", () => {
   toggleElementDisplay(searchResultsE);
@@ -94,14 +100,24 @@ function main() {
     });
   }
   function handleCurrencyClick(e) {
-    const newDefaultCurrency = e.target.innerText;
+    function getDirectTextContent(element) {
+      // Check if the first child is a text node
+      if (
+        element.childNodes.length > 0 &&
+        element.childNodes[0].nodeType === Node.TEXT_NODE
+      ) {
+        return element.childNodes[0].nodeValue.trim();
+      }
+      return ""; // Return an empty string if the first child is not a text node
+    }
+    const newDefaultCurrency = getDirectTextContent(e.target);
     chrome.storage.local.set(
       { defaultCurrency: newDefaultCurrency },
       function () {
         if (chrome.runtime.lastError) {
           console.error(chrome.runtime.lastError);
         } else {
-          correncySelectionEBC.innerText = newDefaultCurrency;
+          currencySelectionEBC.innerText = newDefaultCurrency;
           toggleElementDisplay(searchResultsE);
           toggleElementText(currencySelectionEBS, "▼", "▲");
         }
