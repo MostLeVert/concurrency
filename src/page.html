@@ -1,89 +1,116 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Home</title>
-    </head>
 
-    <style>
-        body {
-            width: 300px;
-        }
-        .setting-row {
-            display: flex;
-            font-size: 1rem;
-        }
-        .setting-description-container {
-            border-right: 2px solid black;
-            width: 50%;
-            font-size: 1rem;
-        }
-        .setting-interaction-container {
-            display: inline-block;
-            width: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #currency-selection {
-            font-size: 1rem;
-        }
-        #search-results-container {
-            border: 1.5px solid black;
-            margin-top: 5px;
-        }
-        #search-results {
-            max-height: 330px;
-            overflow-y: scroll;
-        }
-        #search-results-search {
-            height: 50px;
-            font-size: 1.1rem;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid black;
-        }
-        #search-results-search-input {
-            border: none;
-            margin-left: 10px;
-            font-size: 1.1rem;
-            padding: 5px;
-            outline: none;
-            border-bottom: 1px solid black;
-        }
-        .search-result {
-            padding: 5px;
-            font-size: 1rem;
-            border: 1px solid transparent;
-            display: flex;
-            justify-content: space-between;
-        }
-        .search-result-desc {
-            color: grey;
-        }
-        .search-result:hover {
-            border: 1px solid black;
-            cursor: pointer;
-        }
-        button {
-            padding: 5px;
-            border: 1.5px solid black;
-            border-radius: 5px;
-            background: white;
-        }
-        button:hover {
-            cursor: pointer;
-        }
-    </style>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+</head>
 
-    <body>
-        <h1>Concurrency</h1>
-        <main>
-            <h2>Settings</h2>
-            <h3>Default Conversion Currency</h3>
-            <div class="setting-row">
+<style>
+    body {
+        width: 300px;
+    }
+
+    .setting-row {}
+
+    .setting-class {
+        color: grey;
+        /* padding: 2.5px; */
+    }
+
+    .setting-description-container {
+        /* border-right: 2px solid black; */
+        /* width: 50%; */
+        font-size: .9rem;
+        margin-bottom: 10px;
+    }
+
+    .setting-interaction-container {
+        /* width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center; */
+    }
+
+    #currency-selection {
+        border-radius: 0;
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1rem;
+    }
+
+    #search-results-container {
+        border: 1.5px solid black;
+        margin-top: 5px;
+    }
+
+    #search-results {
+        max-height: 320px;
+        overflow-y: scroll;
+    }
+
+    #search-results-search {
+        height: 25px;
+        font-size: 1.1rem;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid black;
+    }
+
+    #search-results-search-input {
+        border: none;
+        margin-left: 10px;
+        font-size: 1rem;
+        font-family: monospace;
+        outline: none;
+        padding: 0;
+        /* border-bottom: 1.5px solid black; */
+    }
+
+    .search-result {
+        padding: 5px;
+        font-size: 1rem;
+        border: 1px solid transparent;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .search-result-desc {
+        color: grey;
+        overflow: hidden;
+    }
+
+    .search-result:hover {
+        border: 1px solid black;
+        cursor: pointer;
+    }
+
+    button {
+        padding: 5px;
+        border: 1.5px solid black;
+        border-radius: 5px;
+        background: white;
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    h3 {
+        margin: 5px 0px 5px 0px;
+        padding: 0;
+    }
+</style>
+
+<body>
+    <h1>Concurrency</h1>
+    <main>
+        <h2>Settings</h2>
+        <h3><span class="setting-class"">Currency:</span> Set default</h3>
+            <div class=" setting-row">
                 <div class="setting-description-container">
                     Specify the default currency for all conversion outputs.
                 </div>
@@ -93,15 +120,34 @@
                         <span id="currency-selection-S">▼</span>
                     </button>
                 </div>
-            </div>
-            <div id="search-results-container" style="display: none">
-                <div id="search-results-search">
-                    Search: <input id="search-results-search-input" />
                 </div>
-                <div id="search-results"></div>
-            </div>
-        </main>
-    </body>
+                <div id="search-results-container" style="display: none">
+                    <div id="search-results-search">
+                        <!-- Search:  -->
+                        <svg width="1rem" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                            <circle cx="9.14" cy="9.14" r="7.64" fill="none" stroke="#020202" stroke-miterlimit="10"
+                                stroke-width="1.91" />
+                            <line x1="22.5" y1="22.5" x2="14.39" y2="14.39" fill="none" stroke="#020202"
+                                stroke-miterlimit="10" stroke-width="1.91" />
+                        </svg>
+                        <input id="search-results-search-input" placeholder="Search Coins" />
+                    </div>
+                    <div id="search-results"></div>
+                </div>
+                <h2>Convert</h2>
+                <input id="page-conversion-one" />
+                <button id="currency-selection">
+                    <span id="currency-selection-C">CAD</span>
+                    <span id="currency-selection-S">▼</span>
+                </button>
+                <input id="page-conversion-two" />
+                <button id="currency-selection">
+                    <span id="currency-selection-C">CAD</span>
+                    <span id="currency-selection-S">▼</span>
+                </button>
+    </main>
+</body>
 
-    <script defer src="page.js"></script>
+<script defer src="page.js"></script>
+
 </html>

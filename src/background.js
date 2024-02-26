@@ -9,8 +9,24 @@ const currencyMap = {
   "₿": "btc",
 };
 
-chrome.contextMenus.onClicked.addListener(genericOnClick);
-
+// chrome.contextMenus.onClicked.addListener(genericOnClick);
+// chrome.contextMenus.onClicked.addListener((info, tab) => {
+//   chrome.tabs.sendMessage(tab.id, { action: "spawnDivAtSelection" });
+// });
+chrome.contextMenus.onClicked.addListener(function (info, tab) {
+  if (tab) {
+    /* Inject the code into the current tab */
+    chrome.scripting.executeScript(
+      {
+        target: { tabId: tab.id },
+        files: ["content.js"],
+      },
+      (injRes) => {
+        console.log(injRes);
+      },
+    );
+  }
+});
 async function genericOnClick(info) {
   let to = "usd";
   chrome.storage.local.get(["defaultCurrency"], async function (result) {
