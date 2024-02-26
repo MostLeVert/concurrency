@@ -1,4 +1,4 @@
-const searchResultsE = document.getElementById("search-results");
+const searchResultsE = document.getElementById("search-results-container");
 const searchResultsES = document.getElementById("search-results-search");
 const currencySelectionEB = document.getElementById("currency-selection");
 const currencySelectionEBS = document.getElementById("currency-selection-S");
@@ -38,7 +38,7 @@ function main() {
   getInitData();
 
   function createData(data) {
-    renderList(Object.entries(data).slice(0, 10));
+    renderList(Object.entries(data));
     searchResultsES.addEventListener("input", (e) => {
       search(e.target.value, data);
     });
@@ -66,9 +66,7 @@ function main() {
             ? 1
             : 0;
         return exactMatchA - exactMatchB || keyA.localeCompare(keyB);
-      })
-      // Limit to the top 10 results
-      .slice(0, 10);
+      });
 
     // Convert the filtered and sorted array back to an object, if needed
     const topResults = results.reduce((acc, [key, value]) => {

@@ -29,10 +29,13 @@
         #currency-selection {
             font-size: 1rem;
         }
-        #search-results {
+        #search-results-container {
             border: 1.5px solid black;
-            /* box-shadow: 0px 0px 5px 0px grey; */
-            /* border-radius: 5px; */
+            margin-top: 5px;
+        }
+        #search-results {
+            max-height: 330px;
+            overflow-y: scroll;
         }
         #search-results-search {
             height: 50px;
@@ -63,13 +66,11 @@
         .search-result:hover {
             border: 1px solid black;
             cursor: pointer;
-            /* box-shadow: 0px 0px 5px 0px lightgrey; */
         }
         button {
             padding: 5px;
             border: 1.5px solid black;
             border-radius: 5px;
-            /* box-shadow: 0px 0px 5px 0px lightgrey; */
             background: white;
         }
         button:hover {
@@ -93,10 +94,11 @@
                     </button>
                 </div>
             </div>
-            <div id="search-results" style="display: none">
+            <div id="search-results-container" style="display: none">
                 <div id="search-results-search">
                     Search: <input id="search-results-search-input" />
                 </div>
+                <div id="search-results"></div>
             </div>
         </main>
     </body>

@@ -44,7 +44,7 @@ async function genericOnClick(info) {
         console.log("Failed to convert currency.");
       }
     } catch (error) {
-      console.error("Error in genericOnClick:", error);
+      console.log("Error in genericOnClick:", error);
     }
   });
 }
@@ -59,15 +59,16 @@ chrome.runtime.onInstalled.addListener(function () {
 
 async function getCurrency(from, to, amount) {
   try {
+    const toNew = to.toLowerCase();
+    console.log(from, to);
     const response = await fetch(
-      `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${from}/${to}.json`,
+      `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${from}/${toNew}.json`,
     );
     const data = await response.json();
-    const rate = Number(data[to]);
+    const rate = Number(data[toNew]);
     const result = amount * rate;
-    return result.toFixed(9).toString(); // Adjusted to 2 decimal places for currency
-  } catch (error) {
-    console.error("Error in getCurrency:", error);
-    return null; // Return null to indicate failure
+    return result.toFixed(9).toString();
+  } catch (e) {
+    console.log(e);
   }
 }
