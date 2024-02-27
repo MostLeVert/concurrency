@@ -22,6 +22,15 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  if (request.action === "updateCurrency") {
+    chrome.contextMenus.update("convertCurrency", {
+      title: `Convert %s to ${request.newCurrency}`,
+    });
+    sendResponse({ result: "success" });
+  }
+});
+
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
   if (info.menuItemId === "convertCurrency") {
     chrome.scripting.executeScript(
@@ -33,7 +42,7 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
         chrome.storage.local.get(["defaultCurrency"], async function (result) {
           const to = result.defaultCurrency.toLowerCase();
           const from = "usd";
-          const amountIn = Number(info.selectionText);
+          const amountIn = Number(info.selectionText.replace(/[^\d.]/g, ""));
           const response = await fetch(
             `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${from}/${to}.json`,
           );

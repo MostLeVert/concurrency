@@ -118,6 +118,12 @@ function main() {
           currencySelectionEBC.innerText = newDefaultCurrency;
           toggleElementDisplay(searchResultsE);
           toggleElementText(currencySelectionEBS, "▼", "▲");
+          chrome.runtime.sendMessage(
+            { action: "updateCurrency", newCurrency: newDefaultCurrency },
+            function (response) {
+              console.log(response.farewell);
+            },
+          );
         }
       },
     );

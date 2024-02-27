@@ -40,11 +40,20 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   }
 });
 
-// document.addEventListener("mousedown", () => {
-//   document.getElementById("conversionChildElement")?.remove();
-// });
-document.addEventListener("keydown", () => {
-  if (keydown.key === "escape") {
+document.addEventListener("click", handleClickOutside);
+
+function handleClickOutside(event) {
+  const e = document.getElementById("conversionChildElement");
+  if (e && !e.contains(event.target)) {
+    e?.remove();
+  }
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
     document.getElementById("conversionChildElement")?.remove();
   }
+});
+document.addEventListener("scroll", () => {
+  document.getElementById("conversionChildElement")?.remove();
 });

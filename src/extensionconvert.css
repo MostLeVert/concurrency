@@ -1,0 +1,17 @@
+#convert-container {
+    display: flex;
+    max-width: 100%;
+}
+#convert-container input {
+    width: 22.25%;
+    border: 1.5px solid black;
+    border-right: 0px;
+}
+#convert-container svg {
+    width: 8%;
+    margin: 0% 1.5% 0% 1.5%;
+}
+#convert-container button {
+    width: 22.25%;
+    border-left: 0px;
+}

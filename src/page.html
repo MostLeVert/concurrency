@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="extensionconvert.css" />
     <title>Home</title>
 </head>
 
@@ -91,7 +92,6 @@
     button {
         padding: 5px;
         border: 1.5px solid black;
-        border-radius: 5px;
         background: white;
     }
 
@@ -112,7 +112,7 @@
         <h3><span class="setting-class"">Currency:</span> Set default</h3>
             <div class=" setting-row">
                 <div class="setting-description-container">
-                    Specify the default currency for all conversion outputs.
+                    Specify the default currency for all selection conversion outputs.
                 </div>
                 <div class="setting-interaction-container">
                     <button id="currency-selection">
@@ -135,19 +135,30 @@
                     <div id="search-results"></div>
                 </div>
                 <h2>Convert</h2>
-                <input id="page-conversion-one" />
-                <button id="currency-selection">
-                    <span id="currency-selection-C">CAD</span>
-                    <span id="currency-selection-S">▼</span>
-                </button>
-                <input id="page-conversion-two" />
-                <button id="currency-selection">
-                    <span id="currency-selection-C">CAD</span>
-                    <span id="currency-selection-S">▼</span>
-                </button>
+                <div id="convert-container">
+                    <input id="page-conversion-input-one" />
+                    <button id="page-conversion-button-one">
+                        <span id="page-conversion-button-one-currency">USD</span>
+                        <span id="page-conversion-button-one-status">▼</span>
+                    </button>
+                    <svg width="2rem" fill="#000000" viewBox="0 0 384.962 384.962" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M40.942,156.619h187.589c6.641,0,12.03-5.438,12.03-12.151c0-6.713-5.39-12.151-12.03-12.151H40.942l62.558-63.46 c4.704-4.752,4.704-12.439,0-17.179c-4.704-4.752-12.319-4.752-17.011,0l-82.997,84.2c-4.632,4.68-4.68,12.512,0,17.191 l83.009,84.2c4.704,4.752,12.319,4.74,17.011,0c4.704-4.74,4.704-12.439,0-17.179L40.942,156.619z">
+                        </path>
+                        <path
+                            d="M381.472,231.904l-83.009-84.2c-4.704-4.752-12.319-4.74-17.011,0c-4.704,4.74-4.704,12.439,0,17.179l62.558,63.46 H156.421c-6.641,0-12.03,5.438-12.03,12.151c0,6.713,5.39,12.151,12.03,12.151H344.01l-62.558,63.46 c-4.704,4.752-4.704,12.439,0,17.179c4.704,4.752,12.319,4.752,17.011,0l82.997-84.2 C386.104,244.416,386.152,236.584,381.472,231.904z">
+                        </path>
+                    </svg>
+                    <input id="page-conversion-input-two" />
+                    <button id="page-conversion-button-two">
+                        <span id="page-conversion-button-two-currency">CAD</span>
+                        <span id="page-conversion-button-two-status">▼</span>
+                    </button>
+                </div>
     </main>
 </body>
 
 <script defer src="page.js"></script>
+<script defer src="extensionconvert.js"></script>
 
 </html>
