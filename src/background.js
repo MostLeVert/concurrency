@@ -1,10 +1,10 @@
 const currencyMap = {
-  $: "usd",
+  "$": "usd",
   "€": "eur",
   "£": "gbp",
   "¥": "jpy",
   "₹": "inr",
-  Ξ: "eth",
+  "Ξ": "eth",
   "฿": "btc",
   "₿": "btc",
 };

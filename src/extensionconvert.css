@@ -5,6 +5,7 @@
 #convert-container input {
     width: 22.25%;
     border: 1.5px solid black;
+    outline: none;
     border-right: 0px;
 }
 #convert-container svg {
@@ -14,4 +15,24 @@
 #convert-container button {
     width: 22.25%;
     border-left: 0px;
+}
+#convertSearchCtn-a {
+	border: 1.5px solid black;
+	width: 44%;
+	margin-top: 5px;
+	height: 300px;
+	overflow-y: scroll;
+}
+#convertSearchInpCtn-a {
+	display: flex;
+	padding: 7.5px;
+	border-bottom: 1.5px solid black;
+}
+#convertSearchInp-a {
+	width: 70%;
+	border: none;
+	padding: 2px;
+	margin-left: 4px;
+	text-overflow: ellipsis;
+	outline: none;
 }
