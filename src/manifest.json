@@ -1,6 +1,6 @@
 {
   "name": "Concurrency",
-  "description": "Basic Currency Conversion",
+  "description": "Currency Conversion",
   "version": "1.0",
   "manifest_version": 3,
   "permissions": ["contextMenus", "storage", "activeTab", "scripting"],
@@ -9,12 +9,12 @@
   },
   "action": {
     "default_popup": "page.html",
-    "default_icon": "icon.png"
+    "default_icon": "ikn.png"
   },
   "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
+    "16": "ikn.png",
+    "48": "ikn.png",
+    "128": "ikn.png"
   },
   "content_scripts": [
     {
