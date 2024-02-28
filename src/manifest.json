@@ -9,12 +9,12 @@
   },
   "action": {
     "default_popup": "page.html",
-    "default_icon": "ikn.png"
+    "default_icon": "icon.png"
   },
   "icons": {
-    "16": "ikn.png",
-    "48": "ikn.png",
-    "128": "ikn.png"
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
   },
   "content_scripts": [
     {
