@@ -1,165 +1,60 @@
 <!doctype html>
 <html lang="en">
-
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" type="text/css" href="extensionconvert.css" />
+		<link rel="stylesheet" href="page.css" />
 		<title>Home</title>
 	</head>
-
-	<style>
-body {
-	width: 300px;
-}
-
-		.setting-row {}
-
-		.setting-class {
-			color: grey;
-		}
-
-		.setting-description-container {
-			font-size: .9rem;
-			margin-bottom: 10px;
-		}
-
-		.setting-interaction-container {
-		}
-
-		#currency-selection {
-			border-radius: 0;
-			width: 50%;
-			display: flex;
-			justify-content: space-between;
-			font-size: 1rem;
-		}
-
-		#search-results-container {
-			border: 1.5px solid black;
-			margin-top: 5px;
-		}
-
-		#search-results {
-			max-height: 320px;
-			overflow-y: scroll;
-		}
-
-		#search-results-search {
-			height: 25px;
-			font-size: 1.1rem;
-			padding: 10px;
-			display: flex;
-			align-items: center;
-			border-bottom: 1px solid black;
-		}
-
-		#search-results-search-input {
-			border: none;
-			margin-left: 10px;
-			font-size: 1rem;
-			outline: none;
-			padding: 0;
-		}
-
-		.search-result {
-			padding: 5px;
-			font-size: 1rem;
-			border: 1px solid transparent;
-			display: flex;
-			justify-content: space-between;
-		}
-
-		.search-result-desc {
-			color: grey;
-			overflow: hidden;
-		}
-
-		.search-result:hover {
-			border: 1px solid black;
-			cursor: pointer;
-		}
-
-		button {
-			padding: 5px;
-			border: 1.5px solid black;
-			background: white;
-		}
-
-		button:hover {
-			cursor: pointer;
-		}
-
-		h3 {
-			margin: 5px 0px 5px 0px;
-			padding: 0;
-		}
-	</style>
-
 	<body>
+		<div id="cn-findr-ctn" style="display: block">
+			<div id="cn-search-ctn">
+				<svg width="1rem" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+					<circle cx="9.14" cy="9.14" r="7.64" fill="none" stroke="#020202" stroke-miterlimit="10" stroke-width="1.91" />
+					<line x1="22.5" y1="22.5" x2="14.39" y2="14.39" fill="none" stroke="#020202" stroke-miterlimit="10" stroke-width="1.91" />
+				</svg>
+				<input id="cn-search-inp" placeholder="Search Coins" />
+			</div>
+			<div id="cn-findr-rslts"></div>
+		</div>
 		<h1>Concurrency</h1>
 		<main>
-			<h2>Settings</h2>
-			<h3><span class="setting-class"">Currency:</span> Set default</h3>
-			<div class=" setting-row">
-				<div class="setting-description-container">
-									  Specify the default currency for all selection conversion outputs.
-				</div>
-				<div class="setting-interaction-container">
-					<button id="currency-selection">
-						<span id="currency-selection-C">CAD</span>
-						<span id="currency-selection-S">▼</span>
+			<div id="settings-ctn">
+				<h2>Settings</h2>
+				<h3><span class="setting-catagory">Currency:</span>Set default</h3>
+				<div class=" setting-ctn">
+					<div class="setting-desc">
+						Specifies the default currency for all selection conversion outputs.
+					</div>
+					<button id="dfcur-inter-btn">
+						<span id="dfcur-inter-btn-cn">CAD</span>
+						<span id="dfcur-inter-btn-st">▼</span>
 					</button>
 				</div>
 			</div>
-			<div id="search-results-container" style="display: none">
-				<div id="search-results-search">
-					<!-- Search:  -->
-					<svg width="1rem" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000">
-						<circle cx="9.14" cy="9.14" r="7.64" fill="none" stroke="#020202" stroke-miterlimit="10"
-														  stroke-width="1.91" />
-						<line x1="22.5" y1="22.5" x2="14.39" y2="14.39" fill="none" stroke="#020202"
-													    stroke-miterlimit="10" stroke-width="1.91" />
+			<div id="cnvrt-ctn">	
+				<h2>Convert</h2>
+				<div id="cnvrt-intr-ctn">
+					<input id="cnvrt-inp-a" />
+					<button id="cnvrt-btn-a">
+						<span id="cnvrt-btn-cn-a">USD</span>
+						<span id="cnvrt-btn-st-a">▼</span>
+					</button>
+					<svg width="1.2rem" fill="#000000" viewBox="0 0 384.962 384.962" xmlns="http://www.w3.org/2000/svg">
+						<path
+								d="M40.942,156.619h187.589c6.641,0,12.03-5.438,12.03-12.151c0-6.713-5.39-12.151-12.03-12.151H40.942l62.558-63.46 c4.704-4.752,4.704-12.439,0-17.179c-4.704-4.752-12.319-4.752-17.011,0l-82.997,84.2c-4.632,4.68-4.68,12.512,0,17.191 l83.009,84.2c4.704,4.752,12.319,4.74,17.011,0c4.704-4.74,4.704-12.439,0-17.179L40.942,156.619z">
+						</path>
+						<path
+								d="M381.472,231.904l-83.009-84.2c-4.704-4.752-12.319-4.74-17.011,0c-4.704,4.74-4.704,12.439,0,17.179l62.558,63.46 H156.421c-6.641,0-12.03,5.438-12.03,12.151c0,6.713,5.39,12.151,12.03,12.151H344.01l-62.558,63.46 c-4.704,4.752-4.704,12.439,0,17.179c4.704,4.752,12.319,4.752,17.011,0l82.997-84.2 C386.104,244.416,386.152,236.584,381.472,231.904z">
+						</path>
 					</svg>
-					<input id="search-results-search-input" placeholder="Search Coins" />
+					<input id="cnvrt-inp-b" />
+					<button id="cnvrt-btn-b">
+						<span id="cnvrt-btn-cn-b">CAD</span>
+						<span id="cnvrt-btn-st-b">▼</span>
+					</button>
 				</div>
-				<div id="search-results"></div>
-			</div>
-			<h2>Convert</h2>
-			<div id="convert-container">
-				<input id="convertInp-a" />
-				<button id="convertBtn-a">
-					<span id="convertBtn-a-cn">USD</span>
-					<span id="convertBtn-a-st">▼</span>
-				</button>
-				<svg width="2rem" fill="#000000" viewBox="0 0 384.962 384.962" xmlns="http://www.w3.org/2000/svg">
-					<path
-							d="M40.942,156.619h187.589c6.641,0,12.03-5.438,12.03-12.151c0-6.713-5.39-12.151-12.03-12.151H40.942l62.558-63.46 c4.704-4.752,4.704-12.439,0-17.179c-4.704-4.752-12.319-4.752-17.011,0l-82.997,84.2c-4.632,4.68-4.68,12.512,0,17.191 l83.009,84.2c4.704,4.752,12.319,4.74,17.011,0c4.704-4.74,4.704-12.439,0-17.179L40.942,156.619z">
-					</path>
-					<path
-							d="M381.472,231.904l-83.009-84.2c-4.704-4.752-12.319-4.74-17.011,0c-4.704,4.74-4.704,12.439,0,17.179l62.558,63.46 H156.421c-6.641,0-12.03,5.438-12.03,12.151c0,6.713,5.39,12.151,12.03,12.151H344.01l-62.558,63.46 c-4.704,4.752-4.704,12.439,0,17.179c4.704,4.752,12.319,4.752,17.011,0l82.997-84.2 C386.104,244.416,386.152,236.584,381.472,231.904z">
-					</path>
-				</svg>
-				<input id="page-conversion-input-b" />
-				<button id="page-conversion-button-b">
-					<span id="page-conversion-button-b-currency">CAD</span>
-					<span id="page-conversion-button-b-status">▼</span>
-				</button>
-			</div>
-			<div id="convertSearchCtn-a" style="display:none;">
-				<div id="convertSearchInpCtn-a">
-					<svg width="1rem" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000">
-						<circle cx="9.14" cy="9.14" r="7.64" fill="none" stroke="#020202" stroke-miterlimit="10"
-														  stroke-width="1.91" />
-						<line x1="22.5" y1="22.5" x2="14.39" y2="14.39" fill="none" stroke="#020202"
-													    stroke-miterlimit="10" stroke-width="1.91" />
-					</svg>
-					<input id="convertSearchInp-a" placeholder="Search Coins" />
-				</div>
-				<div id="convertSearchRslt-a"></div>
 			</div>
 		</main>
 	</body>
 	<script defer src="page.js"></script>
-	<script defer src="extensionconvert.js"></script>
 </html>

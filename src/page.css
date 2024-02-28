@@ -1,0 +1,81 @@
+:root {
+	font-size: 21px;
+}
+
+input {
+	border: 1.5px solid black;
+	outline: none;
+	font-size: 1rem;
+}
+
+button {
+	border: 1.5px solid black;
+	border-radius: 0;
+	background: white;
+	outline: none;
+	font-size: 1rem;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+#cn-findr-ctn {
+	position: absolute;
+	background: white;
+	border: 1.5px solid black;
+	width: 275px;
+	height: 340px;
+}
+
+#cn-search-ctn {
+	padding: 7.5px;
+	border-bottom: 1.5px solid black;
+	display: flex;
+	align-items: center;
+}
+
+#cn-search-inp {
+	margin-left: 5px;
+	border: none;
+}
+
+body {
+	width: 300px;
+	height: 500px;
+}
+
+.setting-catagory {
+	color: grey;
+	margin-right: 5px;
+}
+
+.setting-desc {
+	margin-bottom: 0.5rem;
+}
+
+#dfcur-inter-btn {
+	width: 50%;
+	display: flex;
+	justify-content: space-between;
+}
+
+#cnvrt-intr-ctn {
+	display: flex;
+}
+
+#cnvrt-intr-ctn input {
+	font-size: 0.7rem;
+	border-right: 0;
+	width: 22%;
+}
+
+ #cnvrt-intr-ctn button {
+	font-size: 0.7rem;
+	border-left: 0;
+	width: 22%;
+}
+
+#cnvrt-intr-ctn svg {
+	padding: 0% 1% 0% 1%;
+}
