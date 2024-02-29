@@ -13,7 +13,7 @@ button {
 	border-radius: 0;
 	background: white;
 	outline: none;
-	font-size: 1rem;
+	font-size: 0.8rem;
 }
 
 button:hover {
@@ -24,8 +24,8 @@ button:hover {
 	position: absolute;
 	background: white;
 	border: 1.5px solid black;
-	width: 275px;
-	height: 340px;
+	width: 125px;
+	height: 225px;
 }
 
 #cn-search-ctn {
@@ -33,16 +33,46 @@ button:hover {
 	border-bottom: 1.5px solid black;
 	display: flex;
 	align-items: center;
+	height: 10px;
 }
 
 #cn-search-inp {
 	margin-left: 5px;
 	border: none;
+	font-size: 0.6rem;
+	width: 75%;
+}
+#cn-findr-rslts {
+	overflow-y: scroll;
+	height: 198.5px;
+}
+.search-rslt {
+	padding: 2px;
+	border: 1px solid transparent;
+	display: flex;
+	justify-content: space-between;
+}
+.search-rslt:hover {
+	cursor: pointer;
+	border: 1px solid black;
+}
+.search-rslt-desc {
+	color: grey;
+	max-width: 65%;
+	text-wrap: nowrap;
+	overflow-x: hidden;
+	font-size: 0.5rem;
+	display: flex;
+	align-items: center;
+}
+
+.search-rslt-code {
+	font-size: 0.65rem;
 }
 
 body {
 	width: 300px;
-	height: 500px;
+	height: 309.43px;
 }
 
 .setting-catagory {
@@ -66,7 +96,7 @@ body {
 
 #cnvrt-intr-ctn input {
 	font-size: 0.7rem;
-	border-right: 0;
+	border-right: 1px solid black;
 	width: 22%;
 }
 

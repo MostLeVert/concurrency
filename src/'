@@ -1,0 +1,56 @@
+const cnFindrCtn = document.getElementById("cn-findr-ctn");
+const dfcurInterBtn = document.getElementById("dfcur-inter-btn");
+const dfcurInterBtnSt = document.getElementById("dfcur-inter-btn-st");
+const cnvrtBtnA = document.getElementById("cnvrt-btn-a");
+const cnvrtBtnStA = document.getElementById("cnvrt-btn-st-a");
+const cnvrtBtnB = document.getElementById("cnvrt-btn-b");
+const cnvrtBtnStB = document.getElementById("cnvrt-btn-st-b");
+let lastOpenedBy = null;
+
+fetch("https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json")
+	.then((response) => response.json())
+	.then((data) => {
+		chrome.local.storage.set({ currenciesJson: data})
+			.then(() => {
+				console.log("Loaded latest currency data");
+			})
+	}).catch((e) => {
+		console.error(e);
+	});
+
+function searchEToggle(e) {
+	if (cnFindrCtn.style.display === "block" && lastOpenedBy === e.currentTarget) {
+		cnFindrCtn.style.display = "none";
+		document.body.style.height = "309.43px";
+	} else {
+		cnFindrCtn.style.display = "block";
+		lastOpenedBy = e.currentTarget;
+		const coords = e.currentTarget.getBoundingClientRect();
+		const lowerLeftX = coords.left + window.scrollX;
+		const lowerLeftY = coords.top + coords.height + window.scrollY + 5;
+		const overFlow = 225 + lowerLeftY - 309.43;
+		document.body.style.height = `${document.body.offsetHeight + overFlow - 17}px`;
+		cnFindrCtn.style.top = `${lowerLeftY}px`;
+		cnFindrCtn.style.left = `${lowerLeftX}px`;
+	}
+}
+
+function eStToggle(e) {
+	if (lastOpenedBy === e) {
+		e.innerText = e.innerText === "▼" ? e.innerText = "▲" : e.innerText = "▼";
+	} }
+
+dfcurInterBtn.addEventListener("click", (e) => {
+	eStToggle(dfcurInterBtnSt);
+	searchEToggle(e);
+})
+
+cnvrtBtnA.addEventListener("click", (e) => {
+	eStToggle(cnvrtBtnStA);
+	searchEToggle(e);
+})
+
+cnvrtBtnB.addEventListener("click", (e) => {
+	eStToggle(cnvrtBtnStB);
+	searchEToggle(e);
+})
